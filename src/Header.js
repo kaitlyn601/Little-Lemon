@@ -1,30 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import logo from './assets/Logo .svg';
 function Header() {
   return (
     <header className='header-container'>
       <img className='logo-img' src={logo} alt='logo' />
       <nav className='nav-container'>
-        <ul>
-          <li>
-            <a href=''>Home</a>
-          </li>
-          <li>
-            <a href=''>About</a>
-          </li>
-          <li>
-            <a href=''>Menu</a>
-          </li>
-          <li>
-            <a href=''>Reservations</a>
-          </li>
-          <li>
-            <a href=''>Order Online</a>
-          </li>
-          <li>
-            <a href=''>Login</a>
-          </li>
-        </ul>
+        <Link to='/'>Home</Link>
+        <Link to='/about'>About</Link>
+        <Link to='/menu'>Menu</Link>
+        <Link to='/bookings'>Reservations</Link>
+        <Link to='orderOnline'>Order Online</Link>
+        <Link to='login'>Login</Link>
       </nav>
     </header>
   );
