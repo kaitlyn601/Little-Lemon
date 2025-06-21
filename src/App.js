@@ -1,13 +1,13 @@
 import './App.css';
-import Nav from './Nav';
+import Header from './Header';
 import Footer from './Footer';
 import Hero from './Hero';
 function App() {
   return (
     <>
-      <Nav></Nav>
-      <Footer></Footer>
+      <Header></Header>
       <Hero></Hero>
+      <Footer></Footer>
     </>
   );
 }
