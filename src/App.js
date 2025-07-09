@@ -21,22 +21,35 @@ function updateTimes(state, action) {
     case 'initialize':
       return {
         availableTimes: defaultTimes,
-        bookedTimes: [],
+        bookedTimesByDate: {},
+        currentDate: '',
       };
-    case 'update':
-      // Simulate same available times regardless of date
+
+    case 'update': {
+      const date = action.date;
+      const booked = state.bookedTimesByDate[date] || [];
       return {
         ...state,
-        availableTimes: defaultTimes.filter(
-          (t) => !state.bookedTimes.includes(t),
-        ),
-      };
-    case 'book':
-      const booked = [...state.bookedTimes, action.time];
-      return {
-        bookedTimes: booked,
+        currentDate: date,
         availableTimes: defaultTimes.filter((t) => !booked.includes(t)),
       };
+    }
+
+    case 'book': {
+      const { date, time } = action;
+      const updatedBooked = {
+        ...state.bookedTimesByDate,
+        [date]: [...(state.bookedTimesByDate[date] || []), time],
+      };
+      return {
+        ...state,
+        bookedTimesByDate: updatedBooked,
+        availableTimes: defaultTimes.filter(
+          (t) => !updatedBooked[date].includes(t),
+        ),
+      };
+    }
+
     default:
       return state;
   }
@@ -45,7 +58,7 @@ function updateTimes(state, action) {
 function initializeTimes() {
   return {
     availableTimes: defaultTimes,
-    bookedTimes: [],
+    bookedTimesByDate: {},
   };
 }
 function App() {
@@ -66,7 +79,7 @@ function App() {
         <Hero></Hero>
         <BookingForm
           availableTimes={state.availableTimes}
-          bookedTimes={state.bookedTimes}
+          bookedTimes={state.bookedTimesByDate[state.currentDate] || []}
           dispatch={dispatch}
         />
         <Footer></Footer>

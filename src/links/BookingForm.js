@@ -12,13 +12,12 @@ function BookingForm({ availableTimes, bookedTimes, dispatch }) {
     const selectedDate = e.target.value;
     setDate(selectedDate);
     dispatch({ type: 'update', date: selectedDate });
-    // Dispatch date change
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (time) {
-      dispatch({ type: 'book', time }); // Book this time
+    if (date && time) {
+      dispatch({ type: 'book', date, time });
       alert(`Reserved at ${time} on ${date}`);
     }
   };
