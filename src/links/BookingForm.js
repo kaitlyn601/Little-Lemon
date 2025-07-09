@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+import BookingSlot from './BookingSlot';
 
-function BookingForm({ availableTimes, dispatch }) {
+function BookingForm({ availableTimes, bookedTimes, dispatch }) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
@@ -16,7 +17,10 @@ function BookingForm({ availableTimes, dispatch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ date, time, guests, occasion });
+    if (time) {
+      dispatch({ type: 'book', time }); // Book this time
+      alert(`Reserved at ${time} on ${date}`);
+    }
   };
   return (
     <>
@@ -69,6 +73,16 @@ function BookingForm({ availableTimes, dispatch }) {
 
         <input type='submit' value='Make Your reservation' />
       </form>
+      <h3>Today's Booking Slots</h3>
+      <ul>
+        {[...availableTimes, ...bookedTimes].sort().map((slot) => (
+          <BookingSlot
+            key={slot}
+            time={slot}
+            isBooked={bookedTimes.includes(slot)}
+          />
+        ))}
+      </ul>
     </>
   );
 }

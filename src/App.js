@@ -15,28 +15,41 @@ import BookingForm from './links/BookingForm';
 // Initial list of times
 const defaultTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
 
-// Reducer function
+// Reducer
 function updateTimes(state, action) {
   switch (action.type) {
+    case 'initialize':
+      return {
+        availableTimes: defaultTimes,
+        bookedTimes: [],
+      };
     case 'update':
-      const selectedDate = action.date;
-      // Future logic: update based on selectedDate
-      return defaultTimes;
+      // Simulate same available times regardless of date
+      return {
+        ...state,
+        availableTimes: defaultTimes.filter(
+          (t) => !state.bookedTimes.includes(t),
+        ),
+      };
+    case 'book':
+      const booked = [...state.bookedTimes, action.time];
+      return {
+        bookedTimes: booked,
+        availableTimes: defaultTimes.filter((t) => !booked.includes(t)),
+      };
     default:
       return state;
   }
 }
 
-// Initialize reducer
 function initializeTimes() {
-  return defaultTimes;
+  return {
+    availableTimes: defaultTimes,
+    bookedTimes: [],
+  };
 }
 function App() {
-  const [availableTimes, dispatch] = useReducer(
-    updateTimes,
-    [],
-    initializeTimes,
-  );
+  const [state, dispatch] = useReducer(updateTimes, {}, initializeTimes);
 
   return (
     <>
@@ -51,7 +64,11 @@ function App() {
           <Route path='/login' element={<Login />} />
         </Routes>
         <Hero></Hero>
-        <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+        <BookingForm
+          availableTimes={state.availableTimes}
+          bookedTimes={state.bookedTimes}
+          dispatch={dispatch}
+        />
         <Footer></Footer>
       </Router>
     </>

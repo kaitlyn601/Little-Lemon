@@ -1,7 +1,11 @@
 import React from 'react';
 
-function BookingSlot() {
-  return <div>BookingSlot</div>;
+function BookingSlot({ time, isBooked }) {
+  return (
+    <li style={{ color: isBooked ? 'gray' : 'green' }}>
+      {time} {isBooked ? '(Booked)' : '(Available)'}
+    </li>
+  );
 }
 
 export default BookingSlot;
