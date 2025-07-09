@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useState } from 'react';
+import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,15 +12,32 @@ import Login from './links/Login';
 import OrderOnline from './links/OrderOnline';
 import BookingForm from './links/BookingForm';
 
+// Initial list of times
+const defaultTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
+
+// Reducer function
+function updateTimes(state, action) {
+  switch (action.type) {
+    case 'update':
+      const selectedDate = action.date;
+      // Future logic: update based on selectedDate
+      return defaultTimes;
+    default:
+      return state;
+  }
+}
+
+// Initialize reducer
+function initializeTimes() {
+  return defaultTimes;
+}
 function App() {
-  const [availableTimes, setAvailableTimes] = useState([
-    '17:00',
-    '18:00',
-    '19:00',
-    '20:00',
-    '21:00',
-    '22:00',
-  ]);
+  const [availableTimes, dispatch] = useReducer(
+    updateTimes,
+    [],
+    initializeTimes,
+  );
+
   return (
     <>
       <Router>
@@ -34,7 +51,7 @@ function App() {
           <Route path='/login' element={<Login />} />
         </Routes>
         <Hero></Hero>
-        <BookingForm availableTimes={availableTimes} />
+        <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
         <Footer></Footer>
       </Router>
     </>
