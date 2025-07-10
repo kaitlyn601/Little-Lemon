@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import App from './App';
 import BookingForm from './BookingForm';
-import { initializeTimes, updateTimes, defaultTimes } from './App';
+import { initializeTimes, updateTimes } from './App';
+import api from './links/api';
 
 test('renders learn react link', () => {
   render(<App />);
@@ -15,32 +16,45 @@ test('Renders the BookingForm heading', () => {
   expect(headingElement).toBeInTheDocument();
 });
 describe('initializeTimes', () => {
-  it('should return the correct initial state', () => {
+  it('should return initial state with availableTimes from fetchAPI', () => {
+    const mockTimes = ['17:00', '18:00', '19:00'];
+    jest.spyOn(api, 'fetchAPI').mockReturnValue(mockTimes);
+
     const result = initializeTimes();
+
     expect(result).toEqual({
-      availableTimes: defaultTimes,
+      availableTimes: mockTimes,
       bookedTimesByDate: {},
-      currentDate: '',
+      currentDate: expect.any(String),
     });
+
+    api.fetchAPI.mockRestore();
   });
 });
 
 describe('updateTimes', () => {
-  it('should return the same state when no bookings exist for the date', () => {
+  it('should return updated availableTimes from fetchAPI for a given date', () => {
+    const mockTimes = ['17:00', '18:00', '19:00'];
+    const mockDate = '2025-07-08';
+
+    jest.spyOn(api, 'fetchAPI').mockReturnValue(mockTimes);
+
     const initialState = {
-      availableTimes: defaultTimes,
+      availableTimes: [],
       bookedTimesByDate: {},
       currentDate: '',
     };
 
     const action = {
       type: 'update',
-      date: '2025-07-08',
+      date: mockDate,
     };
 
-    const updatedState = updateTimes(initialState, action);
+    const result = updateTimes(initialState, action);
 
-    expect(updatedState.availableTimes).toEqual(defaultTimes);
-    expect(updatedState.currentDate).toBe('2025-07-08');
+    expect(result.availableTimes).toEqual(mockTimes);
+    expect(result.currentDate).toBe(mockDate);
+
+    api.fetchAPI.mockRestore();
   });
 });
