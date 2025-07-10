@@ -18,7 +18,9 @@ function BookingForm({ availableTimes, bookedTimes, dispatch }) {
     e.preventDefault();
     if (date && time) {
       dispatch({ type: 'book', date, time });
-      alert(`Reserved at ${time} on ${date}`);
+      alert(
+        `Reserved at ${time} for ${occasion} on ${date} for party of ${guests}`,
+      );
     }
   };
   return (
