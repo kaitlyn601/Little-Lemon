@@ -1,7 +1,6 @@
 import './App.css';
 import React, { useReducer } from 'react';
-import { BrowserRouter as Routes, Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import Hero from './Hero';
@@ -14,9 +13,6 @@ import OrderOnline from './links/OrderOnline';
 import BookingForm from './links/BookingForm';
 import ConfirmedBooking from './links/ConfirmedBooking';
 import { fetchAPI, submitAPI } from './links/api';
-
-// Initial list of times
-const defaultTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
 
 // Reducer
 function updateTimes(state, action) {

@@ -27,7 +27,7 @@ function BookingForm({ availableTimes, bookedTimes, dispatch, submitForm }) {
     submitForm(formData);
     dispatch({ type: 'book', date, time });
   };
-
+  const isFormValid = date && time && guests >= 1 && guests <= 10 && occasion;
   return (
     <>
       <form
@@ -40,6 +40,7 @@ function BookingForm({ availableTimes, bookedTimes, dispatch, submitForm }) {
           id='res-date'
           value={date}
           onChange={handleDateChange}
+          required
         />
 
         <label htmlFor='res-time'>Choose time</label>
@@ -47,6 +48,7 @@ function BookingForm({ availableTimes, bookedTimes, dispatch, submitForm }) {
           id='res-time'
           value={time}
           onChange={(e) => setTime(e.target.value)}
+          required
         >
           <option value=''>Select time</option>
           {availableTimes.map((t) => (
@@ -75,9 +77,12 @@ function BookingForm({ availableTimes, bookedTimes, dispatch, submitForm }) {
           <option value=''>Select occasion</option>
           <option value='Birthday'>Birthday</option>
           <option value='Anniversary'>Anniversary</option>
+          <option value='Other'>Other</option>
         </select>
 
-        <input type='submit' value='Make Your reservation' />
+        <button type='submit' disabled={!isFormValid}>
+          Make Your Reservation
+        </button>
       </form>
       <h3>Today's Booking Slots</h3>
       <ul>

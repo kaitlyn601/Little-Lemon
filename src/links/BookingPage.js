@@ -3,7 +3,11 @@ import { useState } from 'react';
 import BookingForm from './BookingForm';
 
 function BookingPage() {
-  return <></>;
+  return (
+    <>
+      <BookingForm />
+    </>
+  );
 }
 
 export default BookingPage;
