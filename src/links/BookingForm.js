@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import BookingSlot from './BookingSlot';
 
-function BookingForm({ availableTimes, bookedTimes, dispatch }) {
+function BookingForm({ availableTimes, bookedTimes, dispatch, submitForm }) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
@@ -16,13 +16,18 @@ function BookingForm({ availableTimes, bookedTimes, dispatch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (date && time) {
-      dispatch({ type: 'book', date, time });
-      alert(
-        `Reserved at ${time} for ${occasion} on ${date} for party of ${guests}`,
-      );
-    }
+
+    const formData = {
+      date,
+      time,
+      guests,
+      occasion,
+    };
+
+    submitForm(formData);
+    dispatch({ type: 'book', date, time });
   };
+
   return (
     <>
       <form

@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useReducer } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import Hero from './Hero';
@@ -11,6 +12,7 @@ import Reservations from './links/Reservations';
 import Login from './links/Login';
 import OrderOnline from './links/OrderOnline';
 import BookingForm from './links/BookingForm';
+import ConfirmedBooking from './links/ConfirmedBooking';
 import { fetchAPI, submitAPI } from './assets/api';
 
 // Initial list of times
@@ -62,27 +64,35 @@ function initializeTimes() {
 }
 function App() {
   const [state, dispatch] = useReducer(updateTimes, {}, initializeTimes);
-
+  const navigate = useNavigate();
+  const submitForm = (formData) => {
+    const success = submitAPI(formData);
+    if (success) {
+      navigate('/booking-confirmed');
+    } else {
+      alert('Something went wrong. Please try again.');
+    }
+  };
   return (
     <>
-      <Router>
-        <Header></Header>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/Menu' element={<Menu />} />
-          <Route path='/booking' element={<Reservations />} />
-          <Route path='/orderOnline' element={<OrderOnline />} />
-          <Route path='/login' element={<Login />} />
-        </Routes>
-        <Hero></Hero>
-        <BookingForm
-          availableTimes={state.availableTimes}
-          bookedTimes={state.bookedTimesByDate[state.currentDate] || []}
-          dispatch={dispatch}
-        />
-        <Footer></Footer>
-      </Router>
+      <Header></Header>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/Menu' element={<Menu />} />
+        <Route path='/booking' element={<Reservations />} />
+        <Route path='/orderOnline' element={<OrderOnline />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/booking-confirmed' element={<ConfirmedBooking />} />
+      </Routes>
+      <Hero></Hero>
+      <BookingForm
+        availableTimes={state.availableTimes}
+        bookedTimes={state.bookedTimesByDate[state.currentDate] || []}
+        dispatch={dispatch}
+        submitForm={submitForm}
+      />
+      <Footer></Footer>
     </>
   );
 }
