@@ -11,6 +11,7 @@ import Reservations from './links/Reservations';
 import Login from './links/Login';
 import OrderOnline from './links/OrderOnline';
 import BookingForm from './links/BookingForm';
+import { fetchAPI, submitAPI } from './assets/api';
 
 // Initial list of times
 const defaultTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
@@ -18,20 +19,14 @@ const defaultTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'];
 // Reducer
 function updateTimes(state, action) {
   switch (action.type) {
-    case 'initialize':
-      return {
-        availableTimes: defaultTimes,
-        bookedTimesByDate: {},
-        currentDate: '',
-      };
-
     case 'update': {
       const date = action.date;
+      const times = fetchAPI(new Date(date));
       const booked = state.bookedTimesByDate[date] || [];
       return {
         ...state,
         currentDate: date,
-        availableTimes: defaultTimes.filter((t) => !booked.includes(t)),
+        availableTimes: times.filter((t) => !booked.includes(t)),
       };
     }
 
@@ -41,12 +36,13 @@ function updateTimes(state, action) {
         ...state.bookedTimesByDate,
         [date]: [...(state.bookedTimesByDate[date] || []), time],
       };
+      const available = fetchAPI(new Date(date)).filter(
+        (t) => !updatedBooked[date].includes(t),
+      );
       return {
         ...state,
         bookedTimesByDate: updatedBooked,
-        availableTimes: defaultTimes.filter(
-          (t) => !updatedBooked[date].includes(t),
-        ),
+        availableTimes: available,
       };
     }
 
@@ -56,9 +52,12 @@ function updateTimes(state, action) {
 }
 
 function initializeTimes() {
+  const today = new Date();
+  const times = fetchAPI(today); // This returns an array
   return {
-    availableTimes: defaultTimes,
+    availableTimes: times,
     bookedTimesByDate: {},
+    currentDate: today.toISOString().split('T')[0], // formatted as YYYY-MM-DD
   };
 }
 function App() {
