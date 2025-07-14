@@ -4,6 +4,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import Hero from './Hero';
+import Specials from './Specials';
+import Testimonials from './Testimonials';
 import Menu from './links/Menu';
 import About from './links/About';
 import Home from './links/Home';
@@ -81,7 +83,9 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/booking-confirmed' element={<ConfirmedBooking />} />
       </Routes>
-      <Hero></Hero>
+      <Hero />
+      <Specials />
+      <Testimonials />
       <BookingForm
         availableTimes={state.availableTimes}
         bookedTimes={state.bookedTimesByDate[state.currentDate] || []}
