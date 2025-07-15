@@ -98,7 +98,7 @@ body {
   position: relative;
   background-color: #495e57;
   color: white;
-  padding: 60px 20px;
+  padding: 50px 20px;
   overflow: visible;
 }
 .hero-text {
@@ -200,6 +200,7 @@ body {
   justify-content: space-between;
 }
 .special-header-container h2 {
+  color: #495e57;
   font-size: 52px;
   font-weight: 600;
 }
@@ -207,9 +208,10 @@ body {
 /* Testimonials Section */
 .testimonials {
   padding: 60px 20px;
-  background: #495e57;
+  background: #f4ce14;
 }
 .testimonials h2 {
+  color: #495e57;
   font-size: 52px;
   text-align: center;
 }
@@ -269,4 +271,418 @@ body {
 
 .footer-column a:hover {
   text-decoration: underline;
+}
+/* Wrapper for the entire form area */
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 32px;
+  min-height: 100vh; /* optional: full-page vertical centering */
+  background-color: #f9f9f9; /* optional background */
+}
+
+/* Centered heading */
+.form-heading {
+  font-size: 42px;
+  font-weight: bold;
+  text-align: center;
+  color: #495e57;
+}
+
+/* Row layout for form + slots */
+.form-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.reservation-form {
+  display: grid;
+  gap: 20px;
+  max-width: 400px;
+  padding: 24px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+}
+
+.reservation-form label {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.reservation-form input,
+.reservation-form select {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  transition: border 0.3s;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus {
+  outline: none;
+  border-color: #495e57;
+  box-shadow: 0 0 0 2px rgba(73, 94, 87, 0.2);
+}
+
+.reservation-form button {
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #f4ce14;
+  color: #333;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reservation-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.reservation-form button:hover:not(:disabled) {
+  background-color: #eabf0c;
+}
+
+/* Booking slot list */
+.booking-slot {
+  max-width: 300px;
+  padding: 12px;
+}
+
+.booking-slot h3 {
+  margin-bottom: 16px;
+}
+
+.confirmation-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  padding: 40px;
+  text-align: center;
+}
+
+.confirmation-card {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+}
+
+.confirmation-card .emoji {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.confirmation-card h1 {
+  font-size: 28px;
+  margin-bottom: 12px;
+  color: #495e57;
+}
+
+.confirmation-card p {
+  font-size: 16px;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.back-home-button {
+  display: inline-block;
+  background-color: #f4ce14;
+  color: #333;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.back-home-button:hover {
+  background-color: #e5bc10;
+}
+/* About Section */
+.about-section {
+  padding: 60px 20px;
+  background-color: #fefefe;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text h1 {
+  font-size: 36px;
+  color: #495e57;
+  margin-bottom: 12px;
+}
+
+.about-text h3 {
+  font-size: 20px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.about-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-image {
+    order: -1;
+  }
+}
+/* Login Page */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  padding: 20px;
+}
+
+.login-card {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-card h2 {
+  margin-bottom: 24px;
+  color: #495e57;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form label {
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+.login-form input {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.2s;
+}
+
+.login-form input:focus {
+  border-color: #495e57;
+  outline: none;
+}
+
+.login-form button {
+  padding: 12px;
+  background-color: #f4ce14;
+  color: #333;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+  background-color: #e5bc10;
+}
+
+.login-footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.login-footer a {
+  color: #495e57;
+  font-weight: bold;
+  text-decoration: none;
+}
+/* Menu Section */
+.menu-section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.menu-section h1 {
+  font-size: 36px;
+  color: #495e57;
+  margin-bottom: 40px;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.menu-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: scale(1.03);
+}
+
+.menu-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.menu-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.menu-info h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #495e57;
+}
+
+.menu-info p {
+  margin: 0 0 16px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.menu-price {
+  font-weight: bold;
+  color: #f4ce14;
+  font-size: 18px;
+}
+/* Order Online */
+.order-online {
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.order-online h1 {
+  text-align: center;
+  color: #495e57;
+  margin-bottom: 40px;
+}
+
+.menu-list {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.menu-item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+}
+
+.menu-item h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #495e57;
+}
+.menu-item-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+.menu-item p {
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #f4ce14;
+}
+
+.menu-item button {
+  background-color: #f4ce14;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item button:hover {
+  background-color: #e5bc10;
+}
+
+.cart {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.cart h2 {
+  margin-top: 0;
+  color: #495e57;
+}
+
+.cart ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.cart li {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
 }

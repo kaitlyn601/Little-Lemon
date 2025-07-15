@@ -6,24 +6,24 @@ function Specials() {
   const specials = [
     {
       name: 'Greek Salad',
-      price: '$12.99',
+      price: '$12',
       image: greekSalad,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum. Consectetur adipiscing elit.',
+        'Fresh lettuce, tomatoes, olives, and feta cheese with olive oil dressing.',
     },
     {
       name: 'Bruschetta',
-      price: '$10.99',
+      price: '$10',
       image: bruchetta,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum. Lorem ipsum dolor sit amet.',
+        'Grilled bread rubbed with garlic and topped with fresh tomatoes, basil, and olive oil.',
     },
     {
       name: 'Lemon Dessert',
-      price: '$8.00',
+      price: '$8',
       image: lemonDessert,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum.Lorem ipsum dolor sit amet.',
+        'Moist lemon cake topped with a tangy lemon glaze, perfect for dessert.',
     },
   ];
   return (

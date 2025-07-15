@@ -25,7 +25,7 @@ function Footer() {
               <a href='/menu'>Menu</a>
             </li>
             <li>
-              <a href='/booking'>Reservations</a>
+              <a href='/bookings'>Reservations</a>
             </li>
           </ul>
         </div>

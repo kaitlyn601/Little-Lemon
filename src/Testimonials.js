@@ -1,11 +1,32 @@
 import React from 'react';
 
 function Testimonials() {
-  const testimonials = Array(4).fill({
-    rating: 'Rating',
-    review: 'Review',
-    user: 'User Profile',
-  });
+  const testimonials = [
+    {
+      rating: '⭐⭐⭐⭐⭐',
+      user: 'Alice M.',
+      review:
+        'The food was absolutely delicious and the service was top-notch! Highly recommend the lemon chicken.',
+    },
+    {
+      rating: '⭐⭐⭐⭐',
+      user: 'David R.',
+      review:
+        'Cozy atmosphere and amazing flavors. The bruschetta was a standout for me!',
+    },
+    {
+      rating: '⭐⭐⭐⭐⭐',
+      user: 'Samantha K.',
+      review:
+        'I loved everything about Little Lemon — the fresh ingredients, the friendly staff, and the cozy vibe.',
+    },
+    {
+      rating: '⭐⭐⭐⭐',
+      user: 'Michael B.',
+      review:
+        'Great place for a casual meal with friends. The lemon cake is a perfect way to end dinner.',
+    },
+  ];
   return (
     <section className='testimonials'>
       <div className='container'>

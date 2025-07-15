@@ -8,12 +8,12 @@ import Specials from './Specials';
 import Testimonials from './Testimonials';
 import Menu from './links/Menu';
 import About from './links/About';
-import Reservations from './links/Reservations';
 import Login from './links/Login';
 import BookingForm from './links/BookingForm';
 import ConfirmedBooking from './links/ConfirmedBooking';
 import { fetchAPI, submitAPI } from './links/api';
-
+import SignUp from './links/SignUp';
+import OrderOnline from './links/OrderOnline';
 // Reducer
 function updateTimes(state, action) {
   switch (action.type) {
@@ -85,9 +85,8 @@ function App() {
         />
         <Route path='/about' element={<About />} />
         <Route path='/Menu' element={<Menu />} />
-        <Route path='/booking' element={<Reservations />} />
         <Route
-          path='/orderOnline'
+          path='/bookings'
           element={
             <BookingForm
               availableTimes={state.availableTimes}
@@ -97,7 +96,10 @@ function App() {
             />
           }
         />
+        <Route path='/orderOnline' element={<OrderOnline />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<SignUp />} />
+
         <Route path='/booking-confirmed' element={<ConfirmedBooking />} />
       </Routes>
       <Footer></Footer>

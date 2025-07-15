@@ -11,6 +11,10 @@ function Hero() {
         <div className='hero-text'>
           <h1>Little Lemon</h1>
           <h3>Chicago</h3>
+          <p className='hero-description'>
+            Experience the best Mediterranean flavors crafted with fresh
+            ingredients and love.
+          </p>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
