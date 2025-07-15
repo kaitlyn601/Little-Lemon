@@ -10,12 +10,24 @@ function Header() {
         </div>
         <nav>
           <ul className='nav-links'>
-            <Link to='/'>Home</Link>
-            <Link to='/about'>About</Link>
-            <Link to='/menu'>Menu</Link>
-            <Link to='/bookings'>Reservations</Link>
-            <Link to='orderOnline'>Order Online</Link>
-            <Link to='login'>Login</Link>
+            <li>
+              <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/about'>About</Link>
+            </li>
+            <li>
+              <Link to='/menu'>Menu</Link>
+            </li>
+            <li>
+              <Link to='/bookings'>Reservations</Link>
+            </li>
+            <li>
+              <Link to='/orderOnline'>Order Online</Link>
+            </li>
+            <li>
+              <Link to='/login'>Login</Link>
+            </li>
           </ul>
         </nav>
       </div>

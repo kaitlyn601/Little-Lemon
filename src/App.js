@@ -8,10 +8,8 @@ import Specials from './Specials';
 import Testimonials from './Testimonials';
 import Menu from './links/Menu';
 import About from './links/About';
-import Home from './links/Home';
 import Reservations from './links/Reservations';
 import Login from './links/Login';
-import OrderOnline from './links/OrderOnline';
 import BookingForm from './links/BookingForm';
 import ConfirmedBooking from './links/ConfirmedBooking';
 import { fetchAPI, submitAPI } from './links/api';
@@ -75,23 +73,33 @@ function App() {
     <>
       <Header></Header>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route
+          path='/'
+          element={
+            <>
+              <Hero />
+              <Specials />
+              <Testimonials />
+            </>
+          }
+        />
         <Route path='/about' element={<About />} />
         <Route path='/Menu' element={<Menu />} />
         <Route path='/booking' element={<Reservations />} />
-        <Route path='/orderOnline' element={<OrderOnline />} />
+        <Route
+          path='/orderOnline'
+          element={
+            <BookingForm
+              availableTimes={state.availableTimes}
+              bookedTimes={state.bookedTimesByDate[state.currentDate] || []}
+              dispatch={dispatch}
+              submitForm={submitForm}
+            />
+          }
+        />
         <Route path='/login' element={<Login />} />
         <Route path='/booking-confirmed' element={<ConfirmedBooking />} />
       </Routes>
-      <Hero />
-      <Specials />
-      <Testimonials />
-      <BookingForm
-        availableTimes={state.availableTimes}
-        bookedTimes={state.bookedTimesByDate[state.currentDate] || []}
-        dispatch={dispatch}
-        submitForm={submitForm}
-      />
       <Footer></Footer>
     </>
   );

@@ -9,27 +9,30 @@ function Specials() {
       price: '$12.99',
       image: greekSalad,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum. Consectetur adipiscing elit.',
     },
     {
       name: 'Bruschetta',
       price: '$10.99',
       image: bruchetta,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum. Lorem ipsum dolor sit amet.',
     },
     {
       name: 'Lemon Dessert',
       price: '$8.00',
       image: lemonDessert,
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, lorem ipsum.Lorem ipsum dolor sit amet.',
     },
   ];
   return (
     <section className='specials'>
       <div className='container'>
-        <h2>This week's specials!</h2>
+        <div className='special-header-container'>
+          <h2>This week's specials!</h2>
+          <button className='btn-primary'>Online Menu</button>
+        </div>
         <div className='specials-grid'>
           {specials.map((item, idx) => (
             <article className='special-card' key={idx}>
@@ -41,9 +44,6 @@ function Specials() {
               <button className='btn-secondary'>Order a delivery</button>
             </article>
           ))}
-        </div>
-        <div className='online-menu-container'>
-          <button className='btn-primary'>Online Menu</button>
         </div>
       </div>
     </section>
