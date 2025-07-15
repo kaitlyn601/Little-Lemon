@@ -2,7 +2,11 @@ import React from 'react';
 import greekSalad from './assets/greekSalad.jpg';
 import lemonDessert from './assets/lemonDessert.jpg';
 import bruchetta from './assets/bruchetta.svg';
+import { useNavigate } from 'react-router-dom';
+
 function Specials() {
+  const navigate = useNavigate();
+
   const specials = [
     {
       name: 'Greek Salad',
@@ -41,7 +45,12 @@ function Specials() {
                 {item.name} <span className='price'>{item.price}</span>
               </h3>
               <p>{item.description}</p>
-              <button className='btn-secondary'>Order a delivery</button>
+              <button
+                className='btn-secondary'
+                onClick={() => navigate('/orderOnline')}
+              >
+                Order a delivery
+              </button>
             </article>
           ))}
         </div>

@@ -20,10 +20,7 @@ function Hero() {
             eiusmod tempor incididunt ut labore et dolore magna aliqua eiusmod
             tempor incididunt ut labore et dolore magna aliqua.
           </p>
-          <button
-            className='btn-primary'
-            onClick={() => navigate('/orderOnline')}
-          >
+          <button className='btn-primary' onClick={() => navigate('/bookings')}>
             Reserve a Table
           </button>{' '}
         </div>
